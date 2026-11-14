@@ -9,13 +9,17 @@ M.Sc. Advanced Manufacturing at TU Chemnitz, now at the thesis stage. Based in C
 
 ### Current work
 
-Reference CFD data and a reduced-order model for a Czochralski silicon melt.
-I ran 33 cases in ANSYS Fluent across three parameter sweeps. Each case had to pass a check against its own boundary conditions before it went into the dataset. A POD + RBF surrogate trained on these cases rebuilds a full velocity, pressure or temperature field in about 0.1 ms.
+**CFD reference data for a Czochralski silicon melt.** The second version of the dataset varies crystal rotation, crucible rotation and hot-wall temperature together over a Sobol design: 265 ANSYS Fluent runs, all converged to 1e-6 with a closed heat balance. 254 reached a steady solution; the 11 that did not are listed with the reason. A mesh study (GCI over coarse, base and fine meshes) and 43 hold-out cases come with it. Converging to 1e-6 also showed that some cases in my first dataset, which stopped at Fluent's default 1e-3, only looked steady. The Zenodo release is next.
+
+The first version (33 cases in three one-parameter sweeps) and a POD + RBF surrogate trained on it are still online. The surrogate rebuilds a full velocity, pressure or temperature field in about 0.1 ms.
+
+**Prompt-to-CAD with FreeCAD and MCP.** An MCP server that connects Claude to a running FreeCAD session, plus an engineering knowledge base, so a plain-English brief becomes a checked CAD model. I check the results with hand calculations and ANSYS. A 19-case benchmark compares the assistant with and without the knowledge base. I'm now working on the security side (file access limits, job logging, a safe mode without free code execution) before releasing the source.
 
 ### Selected repositories
 
 | Repository | What it is | Key result |
 |---|---|---|
+| [CZ-Dataset-Doe](https://github.com/bertwinshine/CZ-Dataset-Doe) | 265 Fluent cases over a Sobol design of all three parameters, converged to 1e-6, with mesh study and hold-out set | 254 steady cases kept; base mesh within 1 % of the fine mesh |
 | [CZ_Surrogate_App](https://github.com/bertwinshine/CZ_Surrogate_App) | POD + RBF surrogate of the CZ melt, as a Streamlit app | ~0.1 ms per field; leave-one-out error below 2 % of field range |
 | [CZ_Silicon_Melt_CFD_Dataset](https://github.com/bertwinshine/CZ_Silicon_Melt_CFD_Dataset) | 33 Fluent cases on one 8181-node mesh, three sweeps | Meridional flow reverses between 6 and 7 rpm crystal rotation |
 | [freecad-mcp-showcase](https://github.com/bertwinshine/freecad-mcp-showcase) | MCP server that lets Claude build parts live in FreeCAD | Gears and printed boats, checked by hand calculation and ANSYS |
