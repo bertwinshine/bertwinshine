@@ -11,7 +11,9 @@ M.Sc. Advanced Manufacturing at TU Chemnitz, now at the thesis stage. Based in C
 
 **CFD reference data for a Czochralski silicon melt.** The second version of the dataset varies crystal rotation, crucible rotation and hot-wall temperature together over a Sobol design: 265 ANSYS Fluent runs, all converged to 1e-6 with a closed heat balance. 254 reached a steady solution; the 11 that did not are listed with the reason. A mesh study (GCI over coarse, base and fine meshes) and 43 hold-out cases come with it. Converging to 1e-6 also showed that some cases in my first dataset, which stopped at Fluent's default 1e-3, only looked steady. The Zenodo release is next.
 
-The first version (33 cases in three one-parameter sweeps) and a POD + RBF surrogate trained on it are still online. The surrogate rebuilds a full velocity, pressure or temperature field in about 0.1 ms.
+**A digital twin built on that dataset.** Trained on the 254 steady cases and tested on the hold-out set, it returns the full melt field in milliseconds, estimates the hidden wall temperature from four simulated thermocouples, flags a drifting sensor, and marks settings where it should not be trusted. It is a method demonstrator on laminar 2D reference cases, not a furnace model yet. [Demo and results](https://github.com/bertwinshine/CZ_Digital_Twin)
+
+The first version of the dataset (33 cases in three one-parameter sweeps) and a POD + RBF surrogate trained on it are still online. The surrogate rebuilds a full velocity, pressure or temperature field in about 0.1 ms.
 
 **Prompt-to-CAD with FreeCAD and MCP.** An MCP server that connects Claude to a running FreeCAD session, plus an engineering knowledge base, so a plain-English brief becomes a checked CAD model. I check the results with hand calculations and ANSYS. A 19-case benchmark compares the assistant with and without the knowledge base. I'm now working on the security side (file access limits, job logging, a safe mode without free code execution) before releasing the source.
 
@@ -19,6 +21,7 @@ The first version (33 cases in three one-parameter sweeps) and a POD + RBF surro
 
 | Repository | What it is | Key result |
 |---|---|---|
+| [CZ_Digital_Twin](https://github.com/bertwinshine/CZ_Digital_Twin) | Digital twin of the CZ melt built on the v2 dataset: POD + Gaussian-process surrogate, sensor-based state estimation, fault detection and a validity check, with demo video | Hidden wall temperature recovered from 4 sensors within 0.5 K median; drifting sensor caught with no false alarms |
 | [CZ-Dataset-Doe](https://github.com/bertwinshine/CZ-Dataset-Doe) | 265 Fluent cases over a Sobol design of all three parameters, converged to 1e-6, with mesh study and hold-out set | 254 steady cases kept; base mesh within 1 % of the fine mesh |
 | [CZ_Surrogate_App](https://github.com/bertwinshine/CZ_Surrogate_App) | POD + RBF surrogate of the CZ melt, as a Streamlit app | ~0.1 ms per field; leave-one-out error below 2 % of field range |
 | [CZ_Silicon_Melt_CFD_Dataset](https://github.com/bertwinshine/CZ_Silicon_Melt_CFD_Dataset) | 33 Fluent cases on one 8181-node mesh, three sweeps | Meridional flow reverses between 6 and 7 rpm crystal rotation |
@@ -41,7 +44,7 @@ These are written up on the [portfolio](https://bertwinkurisinkalshine-portfolio
 
 **CAD:** SolidWorks (CSWA), PTC Creo, Siemens NX, Fusion 360, FreeCAD
 
-**Code:** Python for pre- and post-processing and reduced-order models (NumPy, pandas, SciPy, Streamlit)
+**Code:** Python for pre- and post-processing and reduced-order models (NumPy, pandas, SciPy, scikit-learn, Streamlit)
 
 ### How I work
 
