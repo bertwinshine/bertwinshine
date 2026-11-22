@@ -15,7 +15,7 @@ M.Sc. Advanced Manufacturing at TU Chemnitz, now at the thesis stage. Based in C
 
 The first version of the dataset (33 cases in three one-parameter sweeps) and a POD + RBF surrogate trained on it are still online. The surrogate rebuilds a full velocity, pressure or temperature field in about 0.1 ms.
 
-**Prompt-to-CAD with FreeCAD and MCP.** An MCP server that connects Claude to a running FreeCAD session, plus an engineering knowledge base, so a plain-English brief becomes a checked CAD model. I check the results with hand calculations and ANSYS. A 19-case benchmark compares the assistant with and without the knowledge base. I'm now working on the security side (file access limits, job logging, a safe mode without free code execution) before releasing the source.
+**ShapeBert: prompt-to-CAD with FreeCAD and MCP.** An MCP server that connects Claude to a running FreeCAD session, plus an engineering knowledge base, so a plain-English brief becomes a checked parametric CAD model. It runs static, modal, buckling and thermal FEA with CalculiX and compares the results with hand calculations. Runs fully locally, with free-form code off by default. v1.0 released: [shapebert-mcp](https://github.com/bertwinshine/shapebert-mcp)
 
 ### Selected repositories
 
