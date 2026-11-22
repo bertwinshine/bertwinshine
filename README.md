@@ -59,4 +59,4 @@ Before I trust a simulation result, I check it against something independent: an
 
 </details>
 
-Open to Master's thesis positions and simulation engineering roles in Germany.
+Open to Master's thesis positions/Internships, Mechanical Design and simulation engineering roles in Germany.
