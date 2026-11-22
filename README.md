@@ -21,6 +21,7 @@ The first version of the dataset (33 cases in three one-parameter sweeps) and a 
 
 | Repository | What it is | Key result |
 |---|---|---|
+| [shapebert-mcp](https://github.com/bertwinshine/shapebert-mcp) | AI CAD + FEA assistant for FreeCAD via MCP: a plain-English brief becomes a parametric model, checked with CalculiX FEA (static, modal, buckling, thermal) and hand calculations. Runs locally, code off by default. | FEA matches hand calculations within about 2 % (cantilever, Euler buckling, modal); 19-case benchmark with and without the knowledge base. v1.0 released. |
 | [CZ_Digital_Twin](https://github.com/bertwinshine/CZ_Digital_Twin) | Digital twin of the CZ melt built on the v2 dataset: POD + Gaussian-process surrogate, sensor-based state estimation, fault detection and a validity check, with demo video | Hidden wall temperature recovered from 4 sensors within 0.5 K median; drifting sensor caught with no false alarms |
 | [CZ-Dataset-Doe](https://github.com/bertwinshine/CZ-Dataset-Doe) | 265 Fluent cases over a Sobol design of all three parameters, converged to 1e-6, with mesh study and hold-out set | 254 steady cases kept; base mesh within 1 % of the fine mesh |
 | [CZ_Surrogate_App](https://github.com/bertwinshine/CZ_Surrogate_App) | POD + RBF surrogate of the CZ melt, as a Streamlit app | ~0.1 ms per field; leave-one-out error below 2 % of field range |
