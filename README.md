@@ -43,7 +43,7 @@ These are written up on the [portfolio](https://bertwinkurisinkalshine-portfolio
 
 **Simulation:** ANSYS Fluent, ANSYS Mechanical
 
-**CAD:** SolidWorks (CSWA), PTC Creo, Siemens NX, Fusion 360, FreeCAD
+**CAD:** SolidWorks (CSWA), CATIA 3DEXPERIENCE, PTC Creo, Siemens NX, Fusion 360, FreeCAD
 
 **Code:** Python for pre- and post-processing and reduced-order models (NumPy, pandas, SciPy, scikit-learn, Streamlit)
 
